@@ -4,7 +4,7 @@ Usage guide:
 Installation:
 ------------
 
-    1. Install NeoVim ... obviously!
+    1. Install NeoVim (... obviously!) and a GUI like 'Neovide'.
 
     2. Install the following software and ensure that Vim and all these binaries are accessible via your 'PATH' environment variable:
         a. Git (should also automatically install Curl)
