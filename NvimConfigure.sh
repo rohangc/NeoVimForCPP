@@ -13,9 +13,6 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
 
     INIT_VIM_DIR="$LOCALAPPDATA/nvim"
     mkdir -p $INIT_VIM_DIR
-
-    mv -f ./init.nvim-win "$INIT_VIM_DIR/init.vim"
-    rm -f ./init.nvim-lin
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Check if XDG_DATA_HOME is set; use default path if not
     XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
@@ -28,10 +25,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     INIT_VIM_DIR="~/.config/nvim"
     mkdir -p $INIT_VIM_DIR
-
-    mv -f ./init.nvim-lin "$INIT_VIM_DIR/init.vim"
-    rm -f ./init.nvim-win
 fi
+
+mv -f ./init.lua "$INIT_VIM_DIR/init.lua"
 
 mv -f ./nvim/* "$INIT_VIM_DIR/"
 rm -rf ./nvim

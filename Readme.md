@@ -23,9 +23,8 @@ Installation:
 
     3. Copy only the following files from this repository into your 'HOME' directory (on Windows, this is usually 'C:\Users\<your login name>').
         a. Directory: 'nvim' and all its subdirectories.
-        b. 'init.nvim-lin'.
-        c. 'init.nvim-win'
-        d. 'NvimConfigure.sh'
+        b. 'init.lua'.
+        c. 'NvimConfigure.sh'
     
     4. Invoke a "Git Shell" ("Git Bash" on Windows) and do the following:
         a. Navigate to your 'HOME' directory.
@@ -35,40 +34,25 @@ Installation:
         e. Close NeoVim.
         f. Invoke NeoVim/GUI like Neovide.
 
-    5. Build 'YouCompleteMe' according to instructions on its website: http://valloric.github.io/YouCompleteMe.
-        a. In brief, on Windows:
-            1. Open a Visual Studio "x64 Native tools Command Prompt".
-            2. Navigate to directory: %HOME%\.vim\bundle\YouCompleteMe.
-            3. Execute: "python ./install.py --clangd-completer".
-                a. Invoke NeoVim.
-                b. Execute: ":PluginInstall".
-
     6. Copy '.clang-tidy' (after modifying to your heart's content) into the 'root' directory that holds all your projects.
 
     7. Restart NeoVim.
 
-Update:
-------
-
-    1. Command line: Invoke a "Git Shell" and execute the following commands:        
-        b. "neovim +PluginUpdate +qall".
-
-    2. From within NeoVim: ":PluginUpdate".
-
+    8. Now, for the magical part:
+        a. Open any source code file in NeoVim.
+        b. Execute command: ":LspInstall" - this magically installs the language server required for the type of file open!!
 
 Some useful links:
 -----------------
 C++:
 ---
 
-1. YouCompleteMe C family documentation: https://github.com/ycm-core/YouCompleteMe#c-family-semantic-completion
-2. Configure CMake (required by YouCompleteMe) to generate a compilation database: https://github.com/ycm-core/YouCompleteMe#c-family-semantic-completion
-3. Force CMake to build your project using all available cores on your system: https://blog.kitware.com/cmake-building-with-all-your-cores
-4. Use Clang (instead of MSVC) to build projects in Visual Studio: https://docs.microsoft.com/en-us/cpp/build/clang-support-msbuild
-5. Clangd documentation: https://clangd.llvm.org/installation
+1. Configure CMake (required by language servers) to generate a compilation database: https://github.com/ycm-core/YouCompleteMe#c-family-semantic-completion
+2. Force CMake to build your project using all available cores on your system: https://blog.kitware.com/cmake-building-with-all-your-cores
+3. Use Clang (instead of MSVC) to build projects in Visual Studio: https://docs.microsoft.com/en-us/cpp/build/clang-support-msbuild
+4. Clangd documentation: https://clangd.llvm.org/installation
 
 Python:
 ------
 
-1. YouCompleteMe Python documentation: https://github.com/ycm-core/YouCompleteMe#python-semantic-completion
-2. Python semantic code completion support is through the JEDI engine: https://github.com/davidhalter/jedi
+1. Python semantic code completion support is through the JEDI engine: https://github.com/davidhalter/jedi

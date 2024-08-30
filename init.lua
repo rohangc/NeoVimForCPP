@@ -1,0 +1,205 @@
+if vim.fn.has('win32') or vim.fn.has('win64') then
+  vim.cmd('source $VIMRUNTIME/mswin.vim')
+end
+
+----------------------------------------------------------------------------------
+--                                    Vim-Plug
+----------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------
+--                                    Plug-ins
+----------------------------------------------------------------------------------
+local Plug = vim.fn['plug#']
+vim.call('plug#begin')
+
+-- My Plugins
+Plug 'junegunn/vim-plug'
+Plug 'AlessandroYorba/Alduin'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sukima/xmledit'
+Plug 'vim-scripts/AfterColors.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'github/copilot.vim'
+Plug 'drmingdrmer/vim-toggle-quickfix'
+Plug 'tpope/vim-fugitive'
+Plug 'elzr/vim-json'
+-- Linux-only plugin
+if (not vim.fn.has("win32")) and (not vim.fn.has("win64")) then
+    Plug 'cdelledonne/vim-cmake'
+end
+
+Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v4.x'})
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+-- All of your Plugs must be added before the following line
+vim.call('plug#end')
+
+-- Brief help:
+-- :PlugInstall to install the plugins
+-- :PlugUpdate to install or update the plugins
+-- :PlugDiff to review the changes from the last update
+-- :PlugClean to remove plugins no longer in the list
+
+-- Put your non-Plug stuff after this line
+----------------------------------------------------------------------------------
+
+-- My Colour scheme
+vim.cmd('colorscheme alduin')
+
+-- My font (on Windows only)
+if vim.fn.has('gui_running') == 1 and (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
+  vim.opt.guifont = 'Consolas:h10'
+end
+
+-- Maximize on startup
+if vim.fn.has('gui_running') == 1 then
+  -- GUI is running or is about to start.
+  -- Maximize gvim window.
+  vim.opt.lines=999
+  vim.opt.columns=999
+end
+
+if vim.fn.has('win32') or vim.fn.has('win64') then
+    vim.opt.rtp:append(vim.fn.expand('~/nvim'))
+    vim.opt.rtp:append(vim.fn.expand('~/nvim/after'))
+else
+    vim.opt.rtp:append(vim.fn.expand('~/.config/nvim'))
+    vim.opt.rtp:append(vim.fn.expand('~/.config/nvim/after'))
+end
+
+-- When searching try to be smart about cases 
+vim.opt.smartcase = true
+
+-- Enable syntax highlighting
+vim.cmd('syntax enable')
+
+-- Set encoding
+vim.opt.encoding = 'utf-8'
+
+-- My preferred settings
+vim.opt.autoindent = true
+vim.opt.belloff = 'all'
+vim.opt.completeopt:remove('preview')
+vim.opt.expandtab = true
+vim.opt.linebreak = true
+vim.opt.backup = false
+vim.opt.list = false
+vim.opt.undofile = false
+vim.opt.writebackup = false
+vim.opt.number = true
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+-- vim.opt.smarttab = true  -- Uncomment if needed
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.textwidth = 0
+vim.opt.wrap = true
+vim.opt.wrapmargin = 0
+vim.opt.wildignore:append { '*\\tmp\\*', '*.dll', '*.exe', '*.exp', '*.gz', '*.ilk', '*.lib', '*.o', '*.pdb', '*.pch', '*.so', '*.swp', 'tags', '*.tar', '*.zip' }
+
+-- My keymaps and variables
+vim.g.NERDTreeMouseMode = 3
+vim.g.NERDTreeShowHidden = 1
+vim.g.NERDTreeWinSize = 70
+vim.g.Tlist_Inc_Winwidth = 0
+vim.g.Tlist_WinWidth = 70
+vim.g.ctrlp_map = '<F7>'
+vim.g.ctrlp_cmd = 'CtrlPMixed'
+vim.g.ctrlp_working_path_mode = 'ra'
+
+vim.api.nvim_set_keymap('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F2>', ':term<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
+vim.api.nvim_set_keymap('n', '<F8>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F10>', ':BufExplorerVerticalSplit<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
+
+-- For plugin 'drmingdrmer/vim-toggle-quickfix':
+vim.api.nvim_set_keymap('n', '<C-g><C-o>', '<Plug>window:quickfix:loop', { noremap = false, silent = true })
+
+----------------------------------------------------------------------------------
+--                                   LSP stuff
+--                     https://lsp-zero.netlify.app/v4.x/tutorial.html
+----------------------------------------------------------------------------------
+local lsp_zero = require('lsp-zero')
+
+-- lsp_attach is where you enable features that only work
+-- if there is a language server active in the file
+local lsp_attach = function(client, bufnr)
+  local opts = {buffer = bufnr}
+
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+  vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+  vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+  vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+end
+
+lsp_zero.extend_lspconfig({
+  sign_text = true,
+  lsp_attach = lsp_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})
+
+----------------------------------------------------------------------------------
+--                                   CMP stuff
+--                     https://lsp-zero.netlify.app/v4.x/tutorial.html
+----------------------------------------------------------------------------------
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  mapping = cmp.mapping.preset.insert({
+    -- Navigate between completion items
+    ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+    ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+
+    -- `Enter` key to confirm completion
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+    -- Ctrl+Space to trigger completion menu
+    ['<C-Space>'] = cmp.mapping.complete(),
+
+    -- Navigate between snippet placeholder
+    ['<C-f>'] = cmp_action.vim_snippet_jump_forward(),
+    ['<C-b>'] = cmp_action.vim_snippet_jump_backward(),
+
+    -- Scroll up and down in the completion documentation
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  }),
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+})
