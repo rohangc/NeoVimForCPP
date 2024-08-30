@@ -1,74 +1,63 @@
 source $VIMRUNTIME/mswin.vim
 
 " ----------------------------------------------------------------------------------
-"                                     Vundle
+"                                     Vim-Plug
 " ----------------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/nvim/bundle/Vundle.vim
-call vundle#begin('~/nvim/bundle')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-"call vundle#begin($HOME\vimfiles\bundle\Vundle.vim)
+" ----------------------------------------------------------------------------------
+"                        Some commented-out diagnostic code
+" ----------------------------------------------------------------------------------
+" Check if XDG_DATA_HOME environment variable is set
+"if exists('$XDG_DATA_HOME')
+"  let rtp = $XDG_DATA_HOME . '\nvim-data\site\autoload'
+"else
+"  let rtp = $LOCALAPPDATA . '\nvim-data\site\autoload'
+"endif
+"
+" Add the path to the runtime path
+"execute 'set rtp+=' . rtp
+"echo 'Final rtp value: ' . &rtp
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" ----------------------------------------------------------------------------------
+"                                     Plug-ins
+" ----------------------------------------------------------------------------------
+" Plug directory is optional
+call plug#begin()
+" Let vim-plug manage itself
+Plug 'junegunn/vim-plug'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" My Plugins
-Plugin 'AlessandroYorba/Alduin'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sukima/xmledit'
-Plugin 'vim-scripts/AfterColors.vim'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'github/copilot.vim'
-Plugin 'drmingdrmer/vim-toggle-quickfix'
-Plugin 'tpope/vim-fugitive'
-Plugin 'elzr/vim-json'
-" Linux only:
-"Plugin 'cdelledonne/vim-cmake'
+" My Plugs
+Plug 'AlessandroYorba/Alduin'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sukima/xmledit'
+Plug 'vim-scripts/AfterColors.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'github/copilot.vim'
+Plug 'drmingdrmer/vim-toggle-quickfix'
+Plug 'tpope/vim-fugitive'
+Plug 'elzr/vim-json'
 " This one takes a lot of time, hence do it last
-Plugin 'ycm-core/YouCompleteMe'
-" The following are made redundant by 'Valloric/YouCompleteMe' above:
-" AutoCompIPop, supertab, OmniCPPComplete
+Plug 'ycm-core/YouCompleteMe'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
+
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+" Brief help:
+" :PlugInstall to install the plugins
+" :PlugUpdate to install or update the plugins
+" :PlugDiff to review the changes from the last update
+" :PlugClean to remove plugins no longer in the list
+
+" Put your non-Plug stuff after this line
 " ----------------------------------------------------------------------------------
 
 

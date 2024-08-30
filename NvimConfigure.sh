@@ -1,25 +1,41 @@
 #!/bin/bash
 
-# Clone Vundle.vim
+# Clone vim-plug.vim
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    git clone --recursive https://github.com/VundleVim/Vundle.vim ~/nvim/bundle/Vundle.vim
-    mkdir ~/AppData/Local/nvim
-    mv -f ./init.nvim-win ~/AppData/Local/nvim/init.vim
+    # Check if XDG_DATA_HOME is set; use default path if not
+    XDG_DATA_HOME="${XDG_DATA_HOME:-$LOCALAPPDATA}"
+
+    # Create the directory if it doesn't exist
+    mkdir -p "$XDG_DATA_HOME"
+
+    # Clone the vim-plug into the required directory
+    curl -fLo "$XDG_DATA_HOME"/nvim-data/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    INIT_VIM_DIR="$LOCALAPPDATA/nvim"
+    mkdir -p $INIT_VIM_DIR
+
+    mv -f ./init.nvim-win "$INIT_VIM_DIR/init.vim"
     rm -f ./init.nvim-lin
-    mv -f ./nvim/* ~/AppData/Local/nvim/
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    git clone --recursive https://github.com/VundleVim/Vundle.vim ~/.config/nvim/bundle/Vundle.vim
-    mkdir ~/.config/nvim
-    mv -f ./init.nvim-lin ~/.config/nvim/init.vim
+    # Check if XDG_DATA_HOME is set; use default path if not
+    XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+    # Create the directory if it doesn't exist
+    mkdir -p "$XDG_DATA_HOME"
+
+    # Clone the vim-plug into the required directory
+    curl -fLo "$XDG_DATA_HOME"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    INIT_VIM_DIR="~/.config/nvim"
+    mkdir -p $INIT_VIM_DIR
+
+    mv -f ./init.nvim-lin "$INIT_VIM_DIR/init.vim"
     rm -f ./init.nvim-win
-    mv -f ./nvim/* ~/.config/nvim/
 fi
 
+mv -f ./nvim/* "$INIT_VIM_DIR/"
 rm -rf ./nvim
 
 # Delete self.
 rm -f 'NvimConfigure.sh'
 rm -f 'Readme.md'
-
-# Use Gvim to install GVim plugins using Vundle.vim
-nvim +PluginInstall +qall

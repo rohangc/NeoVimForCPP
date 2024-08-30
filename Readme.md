@@ -25,12 +25,15 @@ Installation:
         a. Directory: 'nvim' and all its subdirectories.
         b. 'init.nvim-lin'.
         c. 'init.nvim-win'
-        d. 'GvimConfigure.sh'
+        d. 'NvimConfigure.sh'
     
     4. Invoke a "Git Shell" ("Git Bash" on Windows) and do the following:
         a. Navigate to your 'HOME' directory.
         b. Execute the script 'NvimConfigure.sh'.
-        c. If the above script fails to install plugins, do so manually:
+        c. Invoke NeoVim (natively, not from a GUI lile Neovide).
+        d. Execute the commands to install Plug-ins: ":PlugInstall".
+        e. Close NeoVim.
+        f. Invoke NeoVim/GUI like Neovide.
 
     5. Build 'YouCompleteMe' according to instructions on its website: http://valloric.github.io/YouCompleteMe.
         a. In brief, on Windows:
