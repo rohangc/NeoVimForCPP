@@ -78,15 +78,7 @@ end
 -- When searching try to be smart about cases 
 vim.opt.smartcase = true
 
--- Enable syntax highlighting
-vim.cmd('syntax enable')
-
--- Set encoding
-vim.opt.encoding = 'utf-8'
-
 -- My preferred settings
-vim.opt.autoindent = true
-vim.opt.belloff = 'all'
 vim.opt.completeopt:remove('preview')
 vim.opt.expandtab = true
 vim.opt.linebreak = true
