@@ -107,19 +107,19 @@ vim.g.ctrlp_map = '<F7>'
 vim.g.ctrlp_cmd = 'CtrlPMixed'
 vim.g.ctrlp_working_path_mode = 'ra'
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F2>', ':term<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
-vim.api.nvim_set_keymap('n', '<F8>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F10>', ':BufExplorerVerticalSplit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F11>', ':term<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
+vim.keymap.set('n', '<F8>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F10>', ':BufExplorerVerticalSplit<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
 
 -- For plugin 'drmingdrmer/vim-toggle-quickfix':
-vim.api.nvim_set_keymap('n', '<C-g><C-o>', '<Plug>window:quickfix:loop', { noremap = false, silent = true })
+vim.keymap.set('n', '<C-g><C-o>', '<Plug>window:quickfix:loop', { noremap = false, silent = true })
 
 ----------------------------------------------------------------------------------
 --                                   LSP stuff
