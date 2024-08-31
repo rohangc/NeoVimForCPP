@@ -59,14 +59,6 @@ if vim.fn.has('gui_running') == 1 and (vim.fn.has('win32') == 1 or vim.fn.has('w
   vim.opt.guifont = 'Consolas:h10'
 end
 
--- Maximize on startup
-if vim.fn.has('gui_running') == 1 then
-  -- GUI is running or is about to start.
-  -- Maximize gvim window.
-  vim.opt.lines=999
-  vim.opt.columns=999
-end
-
 if vim.fn.has('win32') or vim.fn.has('win64') then
     vim.opt.rtp:append(vim.fn.expand('~/nvim'))
     vim.opt.rtp:append(vim.fn.expand('~/nvim/after'))
