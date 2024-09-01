@@ -1,6 +1,9 @@
 ----------------------------------------------------------------------------------
 --                         Using Vim-Plug plugin manager
 ----------------------------------------------------------------------------------
+-- Disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Emulate Windows behaviour
 --if vim.fn.has('win32') or vim.fn.has('win64') then
@@ -19,8 +22,8 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'Raimondi/delimitMate'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'sukima/xmledit'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'vim-scripts/taglist.vim'
@@ -28,6 +31,8 @@ Plug 'github/copilot.vim'
 Plug 'drmingdrmer/vim-toggle-quickfix'
 Plug 'tpope/vim-fugitive'
 Plug 'elzr/vim-json'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 -- Linux-only plugin
 if (not vim.fn.has("win32")) and (not vim.fn.has("win64")) then
     Plug 'cdelledonne/vim-cmake'
@@ -106,13 +111,21 @@ vim.keymap.set('n', '<F11>', ':term<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
-vim.keymap.set('n', '<F8>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F8>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F10>', ':BufExplorerVerticalSplit<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
 
 -- For plugin 'drmingdrmer/vim-toggle-quickfix':
 vim.keymap.set('n', '<C-g><C-o>', '<Plug>window:quickfix:loop', { noremap = false, silent = true })
+
+-- For plugin 'nvim-telescope/telescope.nvim':
+-- Note: We have retained the default leader key of: '\' in this configuration.
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 ----------------------------------------------------------------------------------
 --                                   LSP stuff
@@ -186,5 +199,23 @@ cmp.setup({
     expand = function(args)
       vim.snippet.expand(args.body)
     end,
+  },
+})
+
+----------------------------------------------------------------------------------
+--                                 NVimTree stuff
+----------------------------------------------------------------------------------
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 60,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
   },
 })
