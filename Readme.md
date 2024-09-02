@@ -9,6 +9,7 @@
    * Cmake - for LSP to work with Clangd, if you don't use cmake, you may need to install and configure your build system to use a utility such as 'compiledb' or 'Bear' to create the compilation databases: 'compile_commands.json' for your project.
    * Ctags.
    * Node.js (for the Github Copilot plugin).
+   * Some plugins (like the FORTRAN LSP client) need Python to work. Install a 64-bit Python distribution, make it available through the PATH environment variable, and install the Python NeoVim package by using command: "pip install neovim".
 
 4. Clone/copy the files into any directory of your choice.
 
