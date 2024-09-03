@@ -21,7 +21,6 @@ vim.call('plug#begin')
 Plug 'junegunn/vim-plug'
 Plug 'AlessandroYorba/Alduin'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'Raimondi/delimitMate'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
@@ -111,7 +110,6 @@ vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
 vim.keymap.set('n', '<F8>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F10>', ':BufExplorerVerticalSplit<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
 
 -- For plugin 'drmingdrmer/vim-toggle-quickfix':
