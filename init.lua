@@ -24,7 +24,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/taglist.vim'
+Plug 'yegappan/taglist'
 Plug 'github/copilot.vim'
 Plug 'drmingdrmer/vim-toggle-quickfix'
 Plug 'tpope/vim-fugitive'
@@ -93,23 +93,18 @@ vim.opt.wrapmargin = 0
 vim.opt.wildignore:append { '*\\tmp\\*', '*.dll', '*.exe', '*.exp', '*.gz', '*.ilk', '*.lib', '*.o', '*.pdb', '*.pch', '*.so', '*.swp', 'tags', '*.tar', '*.zip' }
 
 -- My keymaps and variables
-vim.g.NERDTreeMouseMode = 3
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeWinSize = 70
 vim.g.Tlist_Inc_Winwidth = 0
 vim.g.Tlist_WinWidth = 70
-vim.g.ctrlp_map = '<F7>'
-vim.g.ctrlp_cmd = 'CtrlPMixed'
 vim.g.ctrlp_working_path_mode = 'ra'
 
 vim.keymap.set('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F11>', ':term<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
--- vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
+vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
 vim.keymap.set('n', '<F8>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F11>', ':term<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
 
 -- For plugin 'drmingdrmer/vim-toggle-quickfix':
