@@ -20,7 +20,6 @@ vim.call('plug#begin')
 -- My Plugins
 Plug 'junegunn/vim-plug'
 Plug 'AlessandroYorba/Alduin'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
@@ -101,7 +100,6 @@ vim.keymap.set('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F7>', ':CtrlPMixed<CR>', { noremap = true, silent = true })  -- Uncomment if needed
 vim.keymap.set('n', '<F8>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F9>', ':TlistToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F11>', ':term<CR>', { noremap = true, silent = true })
