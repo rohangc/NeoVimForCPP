@@ -6,7 +6,6 @@
 
 2. Install the following software and ensure that they binaries are accessible via your 'PATH' environment variable along with Neovim itself:
    * Git (should also automatically install Curl, if not install Curl manually).
-   * Node.js (for the Github Copilot plugin).
    * Many plugins need Python to work. Install a 64-bit Python distribution, make it available through the PATH environment variable, and install the Python Neovim package by using command: "pip install neovim".
 
 3. Clone/copy the files of this repo into any directory of your choice.
