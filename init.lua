@@ -55,7 +55,7 @@ vim.cmd('colorscheme alduin')
 
 -- My font (on Windows only)
 if vim.fn.has('gui_running') == 1 and (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
-  vim.opt.guifont = 'Consolas:h10'
+  vim.opt.guifont = 'Consolas:h10.5'
 end
 
 if vim.fn.has('win32') or vim.fn.has('win64') then
