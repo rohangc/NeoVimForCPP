@@ -70,7 +70,6 @@ end
 vim.opt.smartcase = true
 
 -- My preferred settings
-vim.opt.completeopt:remove('preview')
 vim.opt.expandtab = true
 vim.opt.linebreak = true
 vim.opt.backup = false
