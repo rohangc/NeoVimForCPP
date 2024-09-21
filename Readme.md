@@ -23,6 +23,10 @@
    * Open any source code file in Neovim.
    * Execute command: ":LspInstall" - this magically installs the Language Server required for the type of file open!
 
+7. Execute command ':checkhealth'.
+   * This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
+   * Resolve those issues.
+
 ## Extras and Useful Links:
 ### Clang/Clangd:
 
