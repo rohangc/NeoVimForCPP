@@ -27,10 +27,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'elzr/vim-json'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
--- Linux-only plugin
-if (not vim.fn.has("win32")) and (not vim.fn.has("win64")) then
-    Plug 'cdelledonne/vim-cmake'
-end
 Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v4.x'})
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
