@@ -13,11 +13,13 @@
 4. Invoke a "Git Shell" ("Git Bash" on Windows) and do the following:
    * Navigate to the directory where the cloned files are located.
    * Execute the script: 'NvimConfigure.sh'.
-   * Invoke Neovim - ignore any error messages.
-   * In Neovim, simply enter this command to install all necessary plugins: ":PlugInstall".
+   * Invoke Neovim - it should automatically start installing plugins.
    * Close Neovim.
 
-5. Restart Neovim - you shouldn't see any error messages this time around.
+5. Restart Neovim and invoke the Lazy.nvim plugin manager by entering: ':Lazy'.
+   * In the Lazy.nvim plugin manager GUI, key in: "Shift + U" to update all installed plugins.
+   * Key-in: "Shift + I" to install any plugins that were not installed.
+   * Repeat the above two steps until all plugins are installed and are up-to-date.
 
 6. Now, for the magical part!:
    * Open any source code file in Neovim.
@@ -26,6 +28,7 @@
 7. Execute command ':checkhealth'.
    * This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
    * Resolve those issues.
+   * Execute command ':MasonUpdate' once for good measure.
 
 ## Extras and Useful Links:
 ### Clang/Clangd:

@@ -8,11 +8,9 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
     # Create the directory if it doesn't exist
     mkdir -p "$XDG_DATA_HOME"
 
-    # Clone the vim-plug into the required directory
-    curl -fLo "$XDG_DATA_HOME"/nvim-data/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
     INIT_VIM_DIR="$LOCALAPPDATA/nvim"
     mkdir -p $INIT_VIM_DIR
+
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Check if XDG_DATA_HOME is set; use default path if not
     XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
@@ -20,12 +18,15 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Create the directory if it doesn't exist
     mkdir -p "$XDG_DATA_HOME"
 
-    # Clone the vim-plug into the required directory
-    curl -fLo "$XDG_DATA_HOME"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
     INIT_VIM_DIR="~/.config/nvim"
     mkdir -p $INIT_VIM_DIR
 fi
+
+# Clone the Lazy.nvim
+git clone https://github.com/LazyVim/starter $INIT_VIM_DIR
+
+# Remove the .git directory
+rm -rf $INIT_VIM_DIR/.git
 
 mv -f ./init.lua "$INIT_VIM_DIR/init.lua"
 

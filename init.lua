@@ -1,51 +1,94 @@
 ----------------------------------------------------------------------------------
 --                         Using Vim-Plug plugin manager
 ----------------------------------------------------------------------------------
--- Disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Emulate Windows behaviour also for cut/copy/paste
 vim.cmd('source $VIMRUNTIME/mswin.vim')
 
 ----------------------------------------------------------------------------------
 --                                    Plug-ins
 ----------------------------------------------------------------------------------
-local vim = vim
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
--- My Plugins
-Plug 'junegunn/vim-plug'
-Plug 'AlessandroYorba/Alduin'
-Plug 'Raimondi/delimitMate'
-Plug 'nvim-tree/nvim-tree.lua'
-Plug 'scrooloose/nerdcommenter'
-Plug 'yegappan/taglist'
-Plug 'drmingdrmer/vim-toggle-quickfix'
-Plug 'tpope/vim-fugitive'
-Plug 'elzr/vim-json'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v4.x'})
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
 
--- All of your Plugs must be added before the following line
-vim.call('plug#end')
+-- Disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
+vim.g.Tlist_Inc_Winwidth = 0
+vim.g.Tlist_WinWidth = 70
+vim.g.ctrlp_working_path_mode = 'ra'
 
--- Brief help:
--- :PlugInstall to install the plugins
--- :PlugUpdate to install or update the plugins
--- :PlugDiff to review the changes from the last update
--- :PlugClean to remove plugins no longer in the list
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- add your plugins here
 
--- Put your non-Plug stuff after this line
+    -- Add lazy.nvim itself
+    {'folke/lazy.nvim', lazy = false},
+
+    -- Old VimScript based plugins
+    {'AlessandroYorba/Alduin', lazy = false},
+    {'Raimondi/delimitMate', lazy = false},
+    {'scrooloose/nerdcommenter', lazy = false},
+    {'yegappan/taglist', lazy = false},
+    {'drmingdrmer/vim-toggle-quickfix', lazy = false},
+    {'tpope/vim-fugitive', lazy = false},
+
+    -- New Neovim Lua based plugins
+    {'nvim-tree/nvim-tree.lua', lazy = false},
+    {'nvim-lua/plenary.nvim', lazy = false},
+    {'nvim-telescope/telescope.nvim', lazy = false},
+
+    {'VonHeikemen/lsp-zero.nvim',
+      dependencies = {
+        -- LSP Support
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+
+        -- Autocompletion
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+
+        -- Snippets
+        'L3MON4D3/LuaSnip',
+        'rafamadriz/friendly-snippets',
+      }
+    },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  --install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
+
 ----------------------------------------------------------------------------------
-
+--                                General Options
+----------------------------------------------------------------------------------
 -- My Colour scheme
 vim.cmd('colorscheme alduin')
 
@@ -84,9 +127,6 @@ vim.opt.wrapmargin = 0
 vim.opt.wildignore:append { '*\\tmp\\*', '*.dll', '*.exe', '*.exp', '*.gz', '*.ilk', '*.lib', '*.o', '*.pdb', '*.pch', '*.so', '*.swp', 'tags', '*.tar', '*.zip' }
 
 -- My keymaps and variables
-vim.g.Tlist_Inc_Winwidth = 0
-vim.g.Tlist_WinWidth = 70
-vim.g.ctrlp_working_path_mode = 'ra'
 
 vim.keymap.set('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
