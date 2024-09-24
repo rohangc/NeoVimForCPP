@@ -30,6 +30,8 @@
    * Resolve those issues.
    * Execute command ':MasonUpdate' once for good measure.
 
+8. Finally, execute script: 'NvimCleanPostInstall.sh' to clean up unnecessary files from the installation directory.
+
 ## Extras and Useful Links:
 ### Clang/Clangd:
 
