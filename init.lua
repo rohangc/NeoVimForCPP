@@ -47,7 +47,6 @@ require("lazy").setup({
 
     -- Old VimScript based plugins
     {'AlessandroYorba/Alduin', lazy = false},
-    {'Raimondi/delimitMate', lazy = false},
     {'scrooloose/nerdcommenter', lazy = false},
     {'yegappan/taglist', lazy = false},
     {'drmingdrmer/vim-toggle-quickfix', lazy = false},
