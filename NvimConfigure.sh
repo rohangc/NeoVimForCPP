@@ -30,9 +30,6 @@ rm -rf $INIT_VIM_DIR/.git
 
 mv -f ./init.lua "$INIT_VIM_DIR/init.lua"
 
-mv -f ./nvim/* "$INIT_VIM_DIR/"
-rm -rf ./nvim
-
 # Delete self.
 rm -f 'NvimConfigure.sh'
 rm -f 'Readme.md'
