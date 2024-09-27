@@ -38,7 +38,7 @@ vim.g.Tlist_WinWidth = 70
 vim.g.ctrlp_working_path_mode = 'ra'
 
 -- Setup lazy.nvim
-require("lazy").setup({
+require('lazy').setup({
   spec = {
     -- add your plugins here
 
@@ -228,7 +228,7 @@ cmp.setup({
 ----------------------------------------------------------------------------------
 require('nvim-tree').setup({
   sort = {
-    sorter = "case_sensitive",
+    sorter = 'case_sensitive',
   },
   view = {
     width = 60,
@@ -244,13 +244,12 @@ require('nvim-tree').setup({
   }
 })
 
-
 ----------------------------------------------------------------------------------
 --                                 Treesitter stuff
 ----------------------------------------------------------------------------------
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = {"cpp", "diff", "fortran", "gitcommit", "tcl"},
+  ensure_installed = {'cpp', 'diff', 'fortran', 'gitcommit', 'tcl'},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
