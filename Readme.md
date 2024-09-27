@@ -5,7 +5,7 @@
 1. Install the latest version of Neovim (obviously!) and optionally, a GUI like 'Neovide'.
 
 2. Install the following software and ensure that they binaries are accessible via your 'PATH' environment variable along with Neovim itself:
-   * Git (should also automatically install Curl, if not install Curl manually).
+   * Git (should also automatically install Curl. If not, install Curl manually).
    * Many plugins need Python to work. Install a 64-bit Python distribution, make it available through the PATH environment variable, and install the Python Neovim package by using command: "pip install neovim".
    * For the Treesitter syntax highlighting plugin to work, you need to install and add LLVM (Clang) C/C++ compiler to your PATH (see: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang).
 
@@ -26,14 +26,12 @@
    * Open any source code file in Neovim.
    * Execute command: ":LspInstall" - this magically installs the Language Server required for the type of file open!
 
-7. (Repeatedly) use command ":TSInstall <...>" to install the syntax highlighting support for the programming language <...> of your choice.
-
-8. Execute command ':checkhealth'.
+7. Execute command ':checkhealth'.
    * This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
    * Resolve those issues.
    * Execute command ':MasonUpdate' once for good measure.
 
-9. Finally, execute script: 'NvimCleanPostInstall.sh' to clean up unnecessary files from the installation directory.
+8. Finally, execute script: 'NvimCleanPostInstall.sh' to clean up unnecessary files from the installation directory.
 
 ## Extras and Useful Links:
 ### Clang/Clangd:
