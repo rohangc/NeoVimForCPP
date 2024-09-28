@@ -35,7 +35,6 @@ vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 vim.g.Tlist_Inc_Winwidth = 0
 vim.g.Tlist_WinWidth = 70
-vim.g.ctrlp_working_path_mode = 'ra'
 
 -- Setup lazy.nvim
 require('lazy').setup({
