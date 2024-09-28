@@ -1,1 +1,1 @@
-Checks: -checks=-*,cppcoreguidelines-*
+Checks: -checks=-*,cppcoreguidelines-*,google-*,hicpp-*,performance-*,portability-*,readability-*
