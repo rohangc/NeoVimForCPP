@@ -35,7 +35,8 @@
 
 1. Clangd C++ Language Server: install and configure Cmake to generate a compilation database ('compile_commands.json') of your C++ project (see: https://github.com/ycm-core/YouCompleteMe#c-family-semantic-completion). The Clangd Language Server for C++ won't work if 'compile_commands.json' isn't found in your project directory.
 2. If you are unable to use Cmake for generating 'compile_commands.json', you may need to install and configure your build system to use a utility such as 'compiledb' or 'Bear' to create the compilation database.
-3. Optional step: copy '.clang-tidy' (after modifying it to your heart's content) into the 'root' directory that holds all your projects.
-4. Clangd documentation: https://clangd.llvm.org/installation
-5. Force CMake to build your project using all available cores on your system: https://blog.kitware.com/cmake-building-with-all-your-cores
-6. Use Clang (instead of MSVC) to build projects in Visual Studio: https://docs.microsoft.com/en-us/cpp/build/clang-support-msbuild
+3. Optional step: copy '.clang-tidy' (after modifying it as necessary) into the 'root' directory that holds all your projects.
+4. Optional step: copy 'clangd/config.yaml' (after modifying it as necessary) into a directory mentioned here: https://clangd.llvm.org/config.html#files.
+5. Clangd documentation: https://clangd.llvm.org/installation
+6. Force CMake to build your project using all available cores on your system: https://blog.kitware.com/cmake-building-with-all-your-cores
+7. Use Clang (instead of MSVC) to build projects in Visual Studio: https://docs.microsoft.com/en-us/cpp/build/clang-support-msbuild
