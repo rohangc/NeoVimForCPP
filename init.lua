@@ -45,7 +45,7 @@ require('lazy').setup({
     {'folke/lazy.nvim', lazy = false},
 
     -- Old VimScript based plugins
-    {'AlessandroYorba/Alduin', lazy = false},
+    {'ramojus/mellifluous.nvim', lazy = false},
     {'scrooloose/nerdcommenter', lazy = false},
     {'yegappan/taglist', lazy = false},
     {'drmingdrmer/vim-toggle-quickfix', lazy = false},
@@ -88,12 +88,9 @@ require('lazy').setup({
 ----------------------------------------------------------------------------------
 --                                General Options
 ----------------------------------------------------------------------------------
--- My Colour scheme
-vim.cmd('colorscheme alduin')
-
 -- My font (on Windows only)
 if vim.fn.has('gui_running') == 1 and (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
-  vim.opt.guifont = 'Consolas:h10.5'
+  vim.opt.guifont = 'Cascadia Code:h11'
 end
 
 if vim.fn.has('win32') or vim.fn.has('win64') then
@@ -148,7 +145,66 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 ----------------------------------------------------------------------------------
---                                   LSP stuff
+--                         Colorscheme
+----------------------------------------------------------------------------------
+require('mellifluous').setup({
+    dim_inactive = false,
+    colorset = 'alduin',
+    styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+        main_keywords = {},
+        other_keywords = {},
+        types = {},
+        operators = {},
+        strings = {},
+        functions = {},
+        constants = {},
+        comments = { italic = true },
+        markup = {
+            headings = { bold = true },
+        },
+        folds = {},
+    },
+    transparent_background = {
+        enabled = false,
+        floating_windows = true,
+        telescope = true,
+        file_tree = true,
+        cursor_line = true,
+        status_line = false,
+    },
+    flat_background = {
+        line_numbers = false,
+        floating_windows = false,
+        file_tree = false,
+        cursor_line_number = false,
+    },
+    plugins = {
+        cmp = true,
+        nvim_tree = {
+            enabled = true,
+            show_root = false,
+        },
+        lazy = {
+            enabled = true,
+        },
+        mason = {
+            enabled = true,
+        },
+        telescope = {
+            enabled = true,
+            nvchad_like = true,
+        },
+        treesitter = {
+            enabled = true,
+        }
+    },
+})
+
+-- My Colour scheme
+vim.cmd('colorscheme mellifluous')
+
+----------------------------------------------------------------------------------
+--                                   LSP
 --                     https://lsp-zero.netlify.app/v4.x/tutorial.html
 ----------------------------------------------------------------------------------
 local lsp_zero = require('lsp-zero')
@@ -186,7 +242,7 @@ require('mason-lspconfig').setup({
 })
 
 ----------------------------------------------------------------------------------
---                                   CMP stuff
+--                                   CMP
 --                     https://lsp-zero.netlify.app/v4.x/tutorial.html
 ----------------------------------------------------------------------------------
 local cmp = require('cmp')
@@ -223,7 +279,7 @@ cmp.setup({
 })
 
 ----------------------------------------------------------------------------------
---                                 NVimTree stuff
+--                                 NVimTree
 ----------------------------------------------------------------------------------
 require('nvim-tree').setup({
   sort = {
@@ -244,7 +300,7 @@ require('nvim-tree').setup({
 })
 
 ----------------------------------------------------------------------------------
---                                 Treesitter stuff
+--                                 Treesitter
 ----------------------------------------------------------------------------------
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
