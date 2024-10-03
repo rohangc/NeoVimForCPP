@@ -90,7 +90,10 @@ require('lazy').setup({
 ----------------------------------------------------------------------------------
 -- My font (on Windows only)
 if vim.fn.has('gui_running') == 1 and (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
+  -- The default Windows font.
+  -- Install your favourite font and edit the following line (my favourite is: 'Fira Code').
   vim.opt.guifont = 'Cascadia Code:h11'
+  --vim.opt.guifont = 'Fira Code:h11.5'
 end
 
 if vim.fn.has('win32') or vim.fn.has('win64') then

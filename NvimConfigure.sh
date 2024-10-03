@@ -1,35 +1,25 @@
 #!/bin/bash
 
-# Clone vim-plug.vim
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    # Check if XDG_DATA_HOME is set; use default path if not
-    XDG_DATA_HOME="${XDG_DATA_HOME:-$LOCALAPPDATA}"
-
-    # Create the directory if it doesn't exist
-    mkdir -p "$XDG_DATA_HOME"
-
-    INIT_VIM_DIR="$LOCALAPPDATA/nvim"
-    mkdir -p $INIT_VIM_DIR
-
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Check if XDG_DATA_HOME is set; use default path if not
-    XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-
-    # Create the directory if it doesn't exist
-    mkdir -p "$XDG_DATA_HOME"
-
-    INIT_VIM_DIR="~/.config/nvim"
-    mkdir -p $INIT_VIM_DIR
+# Determine location of 'init.lua':
+if [ -n "$XDG_DATA_HOME" ]; then
+    init_lua_dir="$XDG_DATA_HOME/nvim"
+else
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        init_lua_dir="$HOME/.config/nvim"
+    elif [[ "$OSTYPE" == "msys" ]]; then
+        init_lua_dir="$LOCALAPPDATA/nvim"
+    else
+        echo "Unsupported OS type: $OSTYPE"
+        exit 1
+    fi
 fi
 
-# Clone the Lazy.nvim
-git clone https://github.com/LazyVim/starter $INIT_VIM_DIR
+# Create directory if it doesn't already exist
+mkdir -p "$init_lua_dir"
 
-# Remove the .git directory
-rm -rf $INIT_VIM_DIR/.git
-
-mv -f ./init.lua "$INIT_VIM_DIR/init.lua"
+# Copy the 'init.lua' file to the appropriate destination
+mv -f ./init.lua "$init_lua_dir/init.lua"
 
 # Delete self.
-rm -f 'NvimConfigure.sh'
-rm -f 'Readme.md'
+rm -f NvimConfigure.sh
+rm -f Readme.md
