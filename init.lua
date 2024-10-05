@@ -346,3 +346,29 @@ require('nvim-treesitter.configs').setup({
     additional_vim_regex_highlighting = false,
   },
 })
+
+----------------------------------------------------------------------------------
+--                         Miscellaneous Settings
+----------------------------------------------------------------------------------
+-- Show diagnostic messages *also* in a hover window
+--
+-- Manually by pressing '\e' in normal mode or by simply hover the cursor over the
+-- offending line
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '●', -- Could be '■', '▎', 'x'
+    },
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+        show_header = true,
+        source = "always",  -- Or "if_many"
+        border = "rounded",
+    },
+})
+
+vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
