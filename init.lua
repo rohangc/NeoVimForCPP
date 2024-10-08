@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
---                         Using Vim-Plug plugin manager
+--                      Using the lazy.nvim plugin manager
 ----------------------------------------------------------------------------------
 -- Emulate Windows behaviour also for cut/copy/paste
 vim.cmd('source $VIMRUNTIME/mswin.vim')
@@ -56,6 +56,7 @@ require('lazy').setup({
     {'nvim-lua/plenary.nvim', lazy = false},
     {'nvim-telescope/telescope.nvim', lazy = false},
     {'nvim-treesitter/nvim-treesitter', lazy = false},
+    {'nvim-tree/nvim-web-devicons', lazy = false},
 
     {'VonHeikemen/lsp-zero.nvim',
       dependencies = {
