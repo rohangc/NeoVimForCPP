@@ -45,18 +45,18 @@ require('lazy').setup({
     {'folke/lazy.nvim', lazy = false},
 
     -- Old VimScript based plugins
-    {'ramojus/mellifluous.nvim', lazy = false},
-    {'scrooloose/nerdcommenter', lazy = false},
-    {'yegappan/taglist', lazy = false},
-    {'drmingdrmer/vim-toggle-quickfix', lazy = false},
-    {'tpope/vim-fugitive', lazy = false},
+    {'ramojus/mellifluous.nvim'},
+    {'scrooloose/nerdcommenter'},
+    {'yegappan/taglist'},
+    {'drmingdrmer/vim-toggle-quickfix'},
+    {'tpope/vim-fugitive'},
 
     -- New Neovim Lua based plugins
-    {'nvim-tree/nvim-tree.lua', lazy = false},
-    {'nvim-lua/plenary.nvim', lazy = false},
-    {'nvim-telescope/telescope.nvim', lazy = false},
-    {'nvim-treesitter/nvim-treesitter', lazy = false},
-    {'nvim-tree/nvim-web-devicons', lazy = false},
+    {'nvim-tree/nvim-tree.lua'},
+    {'nvim-lua/plenary.nvim'},
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-treesitter/nvim-treesitter'},
+    {'nvim-tree/nvim-web-devicons'},
 
     {'VonHeikemen/lsp-zero.nvim',
       dependencies = {
@@ -83,7 +83,7 @@ require('lazy').setup({
   -- colorscheme that will be used when installing plugins.
   --install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = {enabled = true, auto_updates = true},
 })
 
 ----------------------------------------------------------------------------------
