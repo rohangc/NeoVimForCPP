@@ -9,7 +9,7 @@
    * For the Treesitter syntax highlighting plugin to work, you need to install and add LLVM (Clang) C/C++ compiler to your PATH. (All this is done automatically, but refer this link for more information: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang).
    * Many plugins need Python to work. Install a 64-bit Python distribution, make it available through the PATH environment variable, and install the Python Neovim package by using command: "pip install neovim".
    * Optional step - configure Neovim to use your favourite font:
-     * Install your favourite font and modify the line containing: 'vim.opt.guifont' in: 'init.lua' to load this font in Neovim.
+     * Install your favourite font and modify the line containing: 'vim.opt.guifont' in: 'lua/plugins/mellifluous.lua' to load this font in Neovim.
      * In our configuration file:
        * On Linux: the default terminal font is used.
        * On Windows, the font used in this configuration is: "Cascadia Code" (https://github.com/microsoft/cascadia-code/wiki/Installing-Cascadia-Code) which is installed automatically along with "Windows Terminal".
