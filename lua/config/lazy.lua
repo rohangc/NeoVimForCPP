@@ -54,8 +54,6 @@ vim.diagnostic.config({
 
 vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
-
 -- When searching try to be smart about cases 
 vim.opt.smartcase = true
 
