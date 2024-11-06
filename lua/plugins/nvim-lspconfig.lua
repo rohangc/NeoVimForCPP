@@ -4,7 +4,7 @@
 return{
     {'neovim/nvim-lspconfig',
         dependencies = {
-            -- LSP Support
+            -- Use Mason for LSP server package management
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
