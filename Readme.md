@@ -16,7 +16,7 @@
      * Visual Studio (even the free "Community Edition" will suffice).
 
 3. Install a "Nerd Font" from: https://www.nerdfonts.com and configure Neovim to use it:
-   * Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/lazy.lua'.
+   * Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/options.lua'.
    * The default font in our configuration file:
      * Linux: the default terminal font is used (might not be a "Nerd Font"!).
      * Windows: "Cascadia Code" (https://github.com/microsoft/cascadia-code/wiki/Installing-Cascadia-Code) which is installed automatically along with "Windows Terminal".
@@ -55,7 +55,7 @@
 
 ## Note:
 
-1. We have retained the default 'leader' key: '\\'. If you want to change it to the more popular: SPACE, you can do so in file: 'lua/config/lazy.lua'.
+1. We have retained the default 'leader' key: '\\'. If you want to change it to the more popular: SPACE, you can do so in file: 'lua/config/options.lua'.
 2. Clangd C++ Language Server: install and configure Cmake to generate a compilation database ('compile_commands.json') of your C++ project (see: https://github.com/ycm-core/YouCompleteMe#c-family-semantic-completion). The Clangd Language Server for C++ won't work if 'compile_commands.json' isn't found in your project directory.
    * If you are unable to use Cmake for generating 'compile_commands.json', you may need to install and configure your build system to use a utility such as 'compiledb' or 'Bear' to create the compilation database.
 
