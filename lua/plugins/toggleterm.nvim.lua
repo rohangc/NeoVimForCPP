@@ -4,7 +4,7 @@ return {
 
         opts = {
             close_on_exit = true,
-            clear_env = true, 
+            clear_env = true,
         },
 
         keys = {
