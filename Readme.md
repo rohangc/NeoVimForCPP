@@ -7,13 +7,15 @@
 
 2. Install the following software and ensure that they binaries are accessible via your 'PATH':
    * Git and Curl (on Windows, installing the official Git distribution also installs Curl).
-   * Clang C/C++ compiler for the Treesitter syntax highlighting plugin (https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang).
+   * If a C/C++ compiler is not available in 'PATH', install the Clang C/C++ compiler for the Treesitter syntax highlighting plugin (https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang).
    * Python (64-bit) and its 'Neovim' package (enter this command in the shell prompt: "pip install neovim").
    * For the 'Telescope' plugin:
      * RipGrep (https://github.com/BurntSushi/ripgrep).
      * Fd (https://github.com/sharkdp/fd).
    * On Windows:
-     * Visual Studio (even the free "Community Edition" will suffice).
+     * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation (https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc).
+     * Hence, install Visual Studio (even the free "Community Edition" will suffice).
+     * There is no need to add 'cl.exe' to 'PATH'. Treesitter somehow seems to find the header files it needs from the VS installation directory.
 
 3. Install a "Nerd Font" from: https://www.nerdfonts.com and configure Neovim to use it:
    * Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/options.lua'.

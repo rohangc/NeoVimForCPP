@@ -77,7 +77,7 @@ if vim.fn.has('gui_running') == 1 then
             -- Install your favourite font and edit the following line.
             vim.opt.guifont = 'Cascadia Code:h11'
             -- https://github.com/mietzen/juliamono-nerd-font
-            --vim.opt.guifont = 'JuliaMono Nerd Font:h12.25'
+            --vim.opt.guifont = "JuliaMono Nerd Font Mono:h12.25"
         end
     end
 end
