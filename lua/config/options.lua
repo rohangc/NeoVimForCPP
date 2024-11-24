@@ -16,10 +16,15 @@ else
     --vim.opt.rtp:append(vim.fn.expand('~/.config/nvim/after'))
 end
 
+-- 
 -- Show diagnostic messages *also* in a hover window
 --
 -- Manually by pressing "C-w d" in normal mode or by simply hover the cursor over the
 -- offending line
+--
+-- If the cursor rests on a line with an error/diagnostic, wait for 10 seconds before
+-- displaying the hover window
+--
 vim.diagnostic.config({
     virtual_text = {
         prefix = '●', -- Could be '■', '▎', 'x'
@@ -35,6 +40,7 @@ vim.diagnostic.config({
     },
 })
 
+vim.opt.updatetime = 10000
 vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- When searching try to be smart about cases 
