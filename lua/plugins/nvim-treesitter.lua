@@ -47,8 +47,12 @@ return {
         },
 
         config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
-            require 'nvim-treesitter.install'.compilers = { "clang", "cl" }
+            require('nvim-treesitter.configs').setup(opts)
+            if (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
+               require 'nvim-treesitter.install'.compilers = { 'clang', 'cl' }
+            else
+               require 'nvim-treesitter.install'.compilers = { 'clang', 'gcc', 'cc' }
+            end
         end,
     },
 }
