@@ -11,7 +11,9 @@
    * Python (64-bit) and its 'Neovim' package (enter this command in the shell prompt: "pip install neovim").
    * For the 'Telescope' plugin:
      * RipGrep (https://github.com/BurntSushi/ripgrep).
+       * On Windows, enter command: winget install BurntSushi.ripgrep.MSVC
      * Fd (https://github.com/sharkdp/fd).
+       * On Windows, enter command: winget install sharkdp.fd
    * On Windows:
      * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation (https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc).
      * Hence, install Visual Studio (even the free "Community Edition" will suffice).
