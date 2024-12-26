@@ -76,14 +76,14 @@ if vim.fn.has('gui_running') == 1 then
     if vim.g.neovide then
         -- Put anything you want to happen only in Neovide here
         vim.g.neovide_hide_mouse_when_typing = true
+    end
 
-        -- Font (available only when running a GUI)
-        if (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
-            -- The default Windows font.
-            -- Install your favourite font and edit the following line.
-            vim.opt.guifont = 'Cascadia Code:h11'
-            -- https://github.com/mietzen/juliamono-nerd-font
-            --vim.opt.guifont = "JuliaMono Nerd Font Mono:h12.25"
-        end
+    -- Font (available only when running a GUI)
+    if (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
+        -- The default Windows font.
+        -- Install your favourite font and edit the following line.
+        vim.opt.guifont = 'Cascadia Code:h11'
+        -- https://github.com/mietzen/juliamono-nerd-font
+        --vim.opt.guifont = "JuliaMono Nerd Font Mono:h12.25"
     end
 end
