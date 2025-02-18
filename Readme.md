@@ -53,7 +53,7 @@
    * Restart Neovim.
 
 8. Optional:
-   * Copy '.clang-tidy' (after modifying it as necessary) into the 'root' directory that holds all your projects.
+   * Copy '.clang-format' and '.clang-tidy' (after modifying them as necessary) into the 'root' directory that holds all your projects.
    * Copy 'clangd/config.yaml' (after modifying it as necessary) into a directory mentioned here: https://clangd.llvm.org/config.html#files.
 
 
