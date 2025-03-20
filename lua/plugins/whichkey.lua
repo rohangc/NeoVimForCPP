@@ -18,4 +18,15 @@ return {
             desc = "Buffer local keymaps (which-key)",
         },
     },
+
+    plugins = {
+        marks = true,
+        registers = true,
+        operators = true,
+        motions = true,
+        windows = true,
+        nav = true,
+        z = true,
+        g = true,
+    },
 }
