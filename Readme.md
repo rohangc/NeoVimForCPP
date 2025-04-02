@@ -2,6 +2,7 @@
 A simple, efficient and effective [Neovim](https://neovim.io) customization meant primarily for development of large C++ projects using:
 1. [Clangd](https://clangd.llvm.org) as the [LSP](https://microsoft.github.io/language-server-protocol/) (Language Server Protocol) server.
 1. [Git](https://git-scm.com) as the [VCS](https://en.wikipedia.org/wiki/Version_control) (Version Control System).
+1. [Github Copilot](https://github.com/features/copilot) for Generative AI bells and whistles.
 
 # Usage Guide:
 ## Installation:
@@ -33,6 +34,8 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
              ```bash
              winget install sharkdp.fd
              ```
+   1. [Node.js](https://nodejs.org/en/download) for Github Copilot.
+
 1. Install a [Nerd Font](https://www.nerdfonts.com) and configure Neovim to use it:
    1. Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/options.lua'.
    1. The default font in our configuration file:
