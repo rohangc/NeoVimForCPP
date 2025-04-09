@@ -34,6 +34,31 @@ return { -- Autocompletion
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      {
+          'zbirenbaum/copilot-cmp',
+          dependencies = {
+              'zbirenbaum/copilot.lua'
+          },
+          opts = {
+              panel = {enabled = false},
+              suggestion = {enabled = false},
+
+              filetypes = {
+                  yaml = false,
+                  markdown = false,
+                  help = false,
+                  gitcommit = false,
+                  gitrebase = false,
+                  hgcommit = false,
+                  svn = false,
+                  cvs = false,
+                  ["."] = false,
+              },
+
+              copilot_node_command = 'node', -- Node.js version must be > 18.x
+              server_opts_overrides = {},
+          }
+      },
     },
     config = function()
       -- See `:help cmp`
@@ -71,6 +96,7 @@ return { -- Autocompletion
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
           --['<CR>'] = cmp.mapping.confirm { select = true },
+
           ['<Tab>'] = cmp.mapping.select_next_item(),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
@@ -111,6 +137,7 @@ return { -- Autocompletion
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
+          { name = 'copilot' },
         },
       }
     end,

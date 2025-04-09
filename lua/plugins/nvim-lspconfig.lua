@@ -269,5 +269,11 @@ return {
           end,
         },
       }
+
+      require('copilot').setup({
+        auto_attach = true,
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
     end,
 }
