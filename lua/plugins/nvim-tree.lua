@@ -9,7 +9,7 @@ return {
          },
 
          keys = {
-             {'<F10>', ':NvimTreeToggle<CR>', { noremap = true, silent = true, mode='n' }},
+             { '<F10>', ':NvimTreeToggle<CR>', noremap = true, silent = true, mode='n' }
          },
     },
 }

@@ -1,5 +1,6 @@
 return {
   'NeogitOrg/neogit',
+
   dependencies = {
     'nvim-lua/plenary.nvim',         -- required
     'sindrets/diffview.nvim',        -- optional - Diff integration
@@ -9,5 +10,10 @@ return {
     --'ibhagwan/fzf-lua',              -- optional
     --'echasnovski/mini.pick',         -- optional
   },
+
   config = true,
+
+  keys = {
+    { '<leader>ng', function() require('neogit').open() end, desc = 'Neogit', mode = 'n' }
+  }
 }

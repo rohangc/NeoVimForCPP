@@ -1,6 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
+
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-ui-select.nvim',
@@ -17,21 +18,22 @@ return {
             }
         },
 
+        keys = {
+            { '<leader>fb', function() require('telescope.builtin').buffers() end, desc = 'Telescope [B]uffers', mode='n' },
+            { '<leader>fd', function() require('telescope.builtin').diagnostics() end, desc = 'Telescope [D]iagnostics', mode='n' },
+            { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Telescope [F]iles', mode='n' },
+            { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Telescope live [G]rep', mode='n' },
+            { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Telescope [H]elp tags', mode='n' },
+            { '<leader>fk', function() require('telescope.builtin').keymaps() end, desc = 'Telescope [K]eymaps', mode='n' },
+            { '<leader>ft', function() require('telescope.builtin').tagstack() end, desc = 'Telescope [T]ag stack', mode='n' },
+            { '<leader>fW', function() require('telescope.builtin').grep_string() end, desc = 'Telescope current [W]ord', mode='n' }
+        },
+
         init = function()
             local telescope = require('telescope')
-            local builtin = require('telescope.builtin')
 
             -- Load the ui-select extension
             telescope.load_extension('ui-select')
-
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = 'Telescope [B]uffers'})
-            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {desc = 'Telescope [D]iagnostics'})
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = 'Telescope [F]iles'})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = 'Telescope live [G]rep'})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = 'Telescope [H]elp tags'})
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, {desc = 'Telescope [K]eymaps'})
-            vim.keymap.set('n', '<leader>ft', builtin.tagstack, {desc = 'Telescope [T]ag stack'})
-            vim.keymap.set('n', '<leader>fW', builtin.grep_string, { desc = 'Telescope current [W]ord'})
         end,
     },
 }
