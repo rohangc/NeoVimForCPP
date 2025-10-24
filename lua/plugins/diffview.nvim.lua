@@ -38,4 +38,19 @@ return {
       },
     },
   },
+
+  keys = {
+    {
+       "<F12>",
+       function()
+         if vim.fn.bufname():match("^diffview://") then
+           vim.cmd("DiffviewClose")
+         else
+           vim.cmd("DiffviewOpen")
+         end
+       end,
+       desc = "Toggle Diffview",
+       mode = { "n" },
+    },
+  },
 }
