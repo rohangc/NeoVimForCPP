@@ -9,6 +9,13 @@ return {
         },
 
         opts = {
+            defaults = {
+                layout_strategy = "bottom_pane",
+                layout_config = {
+                    height = 80,
+                    prompt_position = "bottom",
+                }
+            },
             extensions = {
                 ["ui-select"] = {
                     require("telescope.themes").get_dropdown {
