@@ -5,7 +5,7 @@ return {
             'antosha417/nvim-lsp-file-operations',
             'MunifTanjim/nui.nvim',
             'nvim-lua/plenary.nvim',
-            'nvim-tree/nvim-web-devicons' -- not strictly required, but recommended
+            {'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font} -- not strictly required, but recommended
         },
         lazy = false,
         keys = {
