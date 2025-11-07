@@ -71,19 +71,21 @@ vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F6>', ':cnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<2-LeftMouse>', '*', { noremap = true, silent = true })
 
--- Insert your GUI specific code here:
+-- GUI specific:
 if vim.fn.has('gui_running') == 1 then
     if vim.g.neovide then
         -- Put anything you want to happen only in Neovide here
         vim.g.neovide_hide_mouse_when_typing = true
     end
+end
 
-    -- Font (available only when running a GUI)
-    if (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
-        -- The default Windows font.
-        -- Install your favourite font and edit the following line.
-        vim.opt.guifont = 'Cascadia Code:h11'
-        -- https://github.com/mietzen/juliamono-nerd-font
-        --vim.opt.guifont = "JuliaMono Nerd Font Mono:h12.25"
-    end
+-- Font:
+if (vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1) then
+    -- The default Windows font.
+    -- Install your favourite font and edit the following line.
+    vim.opt.guifont = 'Cascadia Code:h11'
+    -- https://github.com/mietzen/juliamono-nerd-font
+    --vim.opt.guifont = "JuliaMono Nerd Font Mono:h12.25"
+else
+    -- Add your favourite Linux font here:
 end

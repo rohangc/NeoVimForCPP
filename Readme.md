@@ -6,7 +6,7 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
 # Usage Guide:
 ## Installation:
 
-1. Install the latest version of [Neovim](https://neovim.io) and a GUI like [Neovide](https://neovide.dev).
+1. Install the latest version of [Neovim](https://neovim.io) (and optionally, a GUI like [Neovide](https://neovide.dev)).
    1. Ensure that Neovim is added to your 'PATH' environment variable.
 
 1. Install the following software and ensure that their binaries are accessible via your 'PATH' environment variable:
@@ -36,8 +36,8 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
 1. Clone/copy the files of this repository into any directory of your choice.
 
 1. Install a [Nerd Font](https://www.nerdfonts.com) and configure Neovim to use it:
-   1. Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/options.lua' of this repository's clone.
-   1. The default font in our configuration file:
+   1. Specify the font by modifying the line containing: 'vim.opt.guifont' in: 'lua/config/options.lua'.
+   1. The default font used in this configuration:
       1. Linux: the default terminal font is used (might not be a "Nerd Font"!).
       1. Windows: [Cascadia Code](https://github.com/microsoft/cascadia-code/wiki/Installing-Cascadia-Code) which is installed automatically along with [Microsoft Terminal](https://github.com/microsoft/terminal).
          * The version bundled with Windows terminal is not a "Nerd Font" as it lacks many glyphs, but it is just enough to get the job done.
