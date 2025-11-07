@@ -78,15 +78,14 @@ return {
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>fD', require('telescope.builtin').lsp_type_definitions, 'Telescope type [D]efinition')
-
+          map('<leader>fI', require('telescope.builtin').lsp_implementations, 'Telescope [I]mplementations')
           map('<leader>fi', require('telescope.builtin').lsp_incoming_calls, 'Telescope [I]ncoming calls')
           map('<leader>fo', require('telescope.builtin').lsp_outgoing_calls, 'Telescope [O]utgoing calls')
-
+          map('<leader>fr', require('telescope.builtin').lsp_references, 'Telescope [R]eferences')
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           --map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
           map('<leader>fs', require('telescope.builtin').lsp_document_symbols, 'Telescope document [S]ymbols')
-
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
           --map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
