@@ -36,17 +36,8 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
              ```
    1. For Github Copilot:
         1. [Node.js](https://nodejs.org/en/download).
-        1. [Copilot-cli](https://github.com/github/copilot-cli):
-           ```bash
-           npm install -g @github/copilot
-           ```
         1. An AI backend like [Zellij](https://github.com/zellij-org/zellij).
-           * On Windows, Zellij has to be installed via WSL:
-           ```
-           wsl --install
-           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-           cargo install --locked zellij
-           ```
+           * On Windows, Zellij has to be installed to work on WSL: [Zellij on WSL](https://dev.to/0xkoji/install-zellij-on-wsl-4f31)
 
 1. Clone/copy the files of this repository into any directory of your choice.
 
