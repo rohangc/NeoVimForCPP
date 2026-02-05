@@ -17,11 +17,14 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
          pip install neovim
          ```
    1. For the Treesitter plugin:
-      1. If a C/C++ compiler is not available in the system's 'PATH', install the [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
-         * On Windows:
-           * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation ([read this](https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc)).
-           * Hence, install [Microsoft Visual Studio](https://visualstudio.microsoft.com) (even the free "Community Edition" will suffice).
-           * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
+      1. A C/C++ compiler is required in your system's 'PATH' - see [this page](https://docs.rs/cc/latest/cc/#compile-time-requirements) for Rust's C/C++ requirement.
+         * On Windows, we have a few options for installing the required compilers:
+           * As part of your [Cygwin](https://www.cygwin.com/) installation.
+           * [MSys2](https://www.msys2.org/) UCRT64 environment. Read the detailed instructions on this page to correctly install the compilers.
+           * [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
+             * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation ([read this](https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc)).
+             * Hence, install [Microsoft Visual Studio](https://visualstudio.microsoft.com) (even the free "Community Edition" will suffice).
+             * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
    1. For the 'Telescope' plugin:
         1. [RipGrep](https://github.com/BurntSushi/ripgrep).
            * On Windows, enter command:
