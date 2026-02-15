@@ -1,28 +1,36 @@
 # Overview:
 A simple, efficient and effective [Neovim](https://neovim.io) customization meant primarily for development of large C++ projects using:
-1. [Clangd](https://clangd.llvm.org) as the [Language Server Protocal](https://microsoft.github.io/language-server-protocol/) server.
+1. [Clangd](https://clangd.llvm.org) as the [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) server.
 1. [Git](https://git-scm.com) as the [Version Control System](https://en.wikipedia.org/wiki/Version_control).
 
 # Usage Guide:
 ## Installation:
 
-1. Install the latest version of [Neovim](https://neovim.io) (and optionally, a GUI like [Neovide](https://neovide.dev)).
+1. Install the latest version of Neovim (and optionally, a GUI like [Neovide](https://neovide.dev)).
    1. Ensure that Neovim is added to your 'PATH' environment variable.
 
 1. Install the following software and ensure that their binaries are accessible via your 'PATH' environment variable:
    1. [Git](https://git-scm.com/downloads) and [Curl](https://curl.se/download.html) (on Windows, installing the official Git distribution also installs Curl).
    1. [Python (64-bit)](https://www.python.org/downloads).
-      1. Install Python's 'Neovim' package:
+      1. Install [Python's](https://www.python.org) 'Neovim' package:
          ```bash
          pip install neovim
          ```
-   1. For the Treesitter plugin:
-      1. If a C/C++ compiler is not available in the system's 'PATH', install the [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
-         * On Windows:
-           * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation ([read this](https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc)).
-           * Hence, install [Microsoft Visual Studio](https://visualstudio.microsoft.com) (even the free "Community Edition" will suffice).
-           * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
-   1. For the 'Telescope' plugin:
+   1. For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) plugin (a Neovim plugin that manages [Tree-sitter](https://github.com/tree-sitter/tree-sitter) and its parsers:
+      1. The latest [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) binary should be available in your system's 'PATH'.
+         * If you have [Node.js](https://nodejs.org/en) installed, you can install Tree-sitter CLI through [npm](https://www.npmjs.com/) using the following command:
+           ```bash
+           npm install tree-sitter-cli -g
+           ```
+      1. A C/C++ compiler is required in your system's 'PATH' - see [this page](https://docs.rs/cc/latest/cc/#compile-time-requirements) for Rust's C/C++ requirement.
+         * On Windows, we have a few options for installing the required compilers:
+           * As part of your [Cygwin](https://www.cygwin.com/) installation.
+           * [MSys2](https://www.msys2.org/) UCRT64 environment. Read the detailed instructions on this page to correctly install the compilers.
+           * [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
+             * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation ([read this](https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc)).
+             * Hence, install [Microsoft Visual Studio](https://visualstudio.microsoft.com) (even the free "Community Edition" will suffice).
+             * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
+   1. For the [Telescope](https://github.com/nvim-telescope/telescope.nvim) plugin:
         1. [RipGrep](https://github.com/BurntSushi/ripgrep).
            * On Windows, enter command:
              ```bash
@@ -59,24 +67,34 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
       ```bash
       chmod +x NvimConfigure.sh
       ```
-1. Invoke Neovim - it should automatically start installing plugins using the 'lazy.nvim' plugin manager.
-   1. In the 'lazy.nvim' plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
-   1. Exit 'lazy.nvim' by entering: ```:q```.
+1. Invoke Neovim - it should automatically start installing plugins using the [Lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager.
+   1. In the Lazy.nvim plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
+   1. Exit Lazy.nvim by entering: ```:q```.
 
 1. Execute command ```:checkhealth```
    1. This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
    1. Resolve those issues.
    1. Restart Neovim.
 
-## Periodic post-install operations:
+## Periodic post-install and miscellaneous operations:
+1. Installing and updating Tree-sitter parsers for various file-types:
+   1. To install a Tree-sitter parser for a new source file type, execute the following command in nvim:
+      ```bash
+      :TSInstall <source_type>
+      ```
+   1. To update all installed Tree-sitter parsers, execute the following command in nvim:
+      ```bash
+      :TSUpdate
+      ```
+
 1. Update plugins:
-   1. Invoke 'lazy.nvim' by entering command: ```:Lazy``` and key in: ```Shift + U``` to update all installed plug-ins.
+   1. Invoke Lazy.nvim by entering command: ```:Lazy``` and key in: ```Shift + U``` to update all installed plug-ins.
 
-1. Update Mason's registry:
-   1. Enter command: ```:MasonUpdate``` to update the Mason registry (a package manager for LSP, linters, etc.).
+1. Update [Mason's](https://github.com/mason-org/mason.nvim) (a package manager for Neovim dependencies) registry:
+   1. Enter command: ```:MasonUpdate``` to update the Mason registry (a package manager for LSP servers, linters, etc.).
 
-1. Installing a Language Server for any source file type.
-   1. Note: The Clangd Language server for C/C++ is installed by default.
+1. Installing a LSP Server for any source file type.
+   1. Note: The Clangd LSP server is installed by default for C/C++.
    1. To install LSP servers of other pragramming languages:
       1. Open any source file (with the appropriate file extension) in Neovim.
       1. Execute command: ```:LspInstall``` - this installs the Language Server required for the type of file currently open.
@@ -84,4 +102,4 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
 
 # Notes:
 1. We have retained the default 'leader' key: '\\'. If you want to change it to the more popular: SPACE, you can do so in file: 'lua/config/options.lua'.
-1. In this Neovim configuration, we don't install any plugins for DAPs, linters and formatters. 'Mason' is used to install and manage LSP servers only.
+1. In this Neovim configuration, we don't install any plugins for DAPs, linters and formatters. Mason is used to install and manage LSP servers only.
