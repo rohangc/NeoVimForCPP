@@ -2,6 +2,7 @@
 A simple, efficient and effective [Neovim](https://neovim.io) customization meant primarily for development of large C++ projects using:
 1. [Clangd](https://clangd.llvm.org) as the [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) server.
 1. [Git](https://git-scm.com) as the [Version Control System](https://en.wikipedia.org/wiki/Version_control).
+1. [Github Copilot](https://github.com/features/copilot) for Generative AI bells and whistles.
 
 # Usage Guide:
 ## Installation:
@@ -16,9 +17,10 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
          ```bash
          pip install neovim
          ```
+   1. [Node.js](https://nodejs.org/en/download) for Github Copilot.   
    1. For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) plugin (a Neovim plugin that manages [Tree-sitter](https://github.com/tree-sitter/tree-sitter) and its parsers:
       1. The latest [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) binary should be available in your system's 'PATH'.
-         * If you have [Node.js](https://nodejs.org/en) installed, you can install Tree-sitter CLI through [npm](https://www.npmjs.com/) using the following command:
+         * Install Tree-sitter CLI through [npm](https://www.npmjs.com/) using the following command:
            ```bash
            npm install tree-sitter-cli -g
            ```
@@ -70,6 +72,7 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
 1. Invoke Neovim - it should automatically start installing plugins using the [Lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager.
    1. In the Lazy.nvim plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
    1. Exit Lazy.nvim by entering: ```:q```.
+   1. Authenticate Github Copilot by entering command: ```:Copilot auth``` and following on-screen instructions.
 
 1. Execute command ```:checkhealth```
    1. This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
