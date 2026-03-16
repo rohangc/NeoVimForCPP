@@ -8,7 +8,7 @@ vim.g.maplocalleader = '\\'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-if vim.fn.has('win32') or vim.fn.has('win64') then
+if vim.fn.has('win32')  == 1 or vim.fn.has('win64') == 1 then
     vim.opt.rtp:append(vim.fn.expand('~/nvim'))
     --vim.opt.rtp:append(vim.fn.expand('~/nvim/after'))
 else
