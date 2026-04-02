@@ -148,6 +148,13 @@ return {
             })
           end
 
+          -- Conditional keymap for clangd's LspClangdSwitchSourceHeader
+          if client and client.name == 'clangd' then
+            map('<leader><F4>', function()
+              vim.cmd('LspClangdSwitchSourceHeader')
+            end, 'Switch header/source', 'n')
+          end
+
           -- The following code creates a keymap to toggle inlay hints in your
           -- code, if the language server you are using supports them
           --
