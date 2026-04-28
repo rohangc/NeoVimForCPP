@@ -279,10 +279,10 @@ return {
       }
 
       -- Github Copilot support:
---    require('copilot').setup({
---      auto_attach = true,
---      suggestion = { enabled = false },
---      panel = { enabled = false },
---    })
+      require('copilot').setup({
+        auto_attach = true,
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
     end,
 }
