@@ -10,9 +10,10 @@ return {
 
         opts = {
             defaults = {
-                layout_strategy = "bottom_pane",
+                layout_strategy = "horizontal",
                 layout_config = {
-                    height = 80,
+                    height = 0.95,
+                    width = 0.95,
                     prompt_position = "bottom",
                 }
             },
