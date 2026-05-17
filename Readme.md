@@ -18,9 +18,9 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
          ```
    1. For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) plugin (a Neovim plugin that manages [Tree-sitter](https://github.com/tree-sitter/tree-sitter) and its parsers:
       1. The latest [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) binary should be available in your system's 'PATH'.
-         * If you have [Node.js](https://nodejs.org/en) installed, you can install Tree-sitter CLI through [npm](https://www.npmjs.com/) using the following command:
+         * On Windows, enter command:
            ```bash
-           npm install tree-sitter-cli -g
+           winget install tree-sitter.tree-sitter-cli
            ```
       1. A C/C++ compiler is required in your system's 'PATH' - see [this page](https://docs.rs/cc/latest/cc/#compile-time-requirements) for Rust's C/C++ requirement.
          * On Windows, we have a few options for installing the required compilers:
