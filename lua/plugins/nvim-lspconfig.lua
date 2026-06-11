@@ -110,6 +110,10 @@ return {
           --map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- Temporarily toggle diagnostics on/off in the current buffer
+          map('<leader>tdo', function() vim.diagnostic.enable(false, {bufnr = 0}) end, '[T]oggle [D]diagnostics [O]ff')
+          map('<leader>tdn', function() vim.diagnostic.enable(true, {bufnr = 0}) end, '[T]oggle [D]diagnostics O[n]')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
