@@ -24,6 +24,8 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
            ```
       1. A C/C++ compiler is required in your system's 'PATH' - see [this page](https://docs.rs/cc/latest/cc/#compile-time-requirements) for Rust's C/C++ requirement.
          * On Windows, we have a few options for installing the required compilers:
+           * [Microsoft Visual Studio](https://visualstudio.microsoft.com) - even the free "Community Edition" will suffice.
+             * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
            * As part of your [Cygwin](https://www.cygwin.com/) installation.
            * [MSys2](https://www.msys2.org/) UCRT64 environment. Read the detailed instructions on this page to correctly install the compilers.
            * [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
