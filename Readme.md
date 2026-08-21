@@ -68,6 +68,7 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
       chmod +x NvimConfigure.sh
       ```
 1. Invoke Neovim - it should automatically start installing plugins using the [Lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager.
+   1. On Windows, the first invocation of Neovim should happen from within a shell with administrator privilages.
    1. In the Lazy.nvim plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
    1. Exit Lazy.nvim by entering: ```:q```.
 
