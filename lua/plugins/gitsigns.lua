@@ -62,6 +62,6 @@ return {
     keys = {
         { '<leader><F5>', ':Gitsigns prev_hunk<CR>', desc = 'Gitsigns previous hunk', mode = 'n' },
         { '<leader><F6>', ':Gitsigns next_hunk<CR>', desc = 'Gitsigns next hunk', mode = 'n' },
-        { '<leader>tp', ':Gitsigns preview_hunk_inline<CR>', desc = 'Gitsigns preview hunk inline', mode = 'n'}
+        { '<leader>ph', ':Gitsigns preview_hunk_inline<CR>', desc = 'Gitsigns [P]review [H]unk inline', mode = 'n'}
     }
 }
