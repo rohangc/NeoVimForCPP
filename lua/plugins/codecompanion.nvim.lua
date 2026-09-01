@@ -25,6 +25,19 @@ return {
     },
   },
   opts = {
+    adapters = {
+      http = {
+        copilot = function()
+          return require('codecompanion.adapters').extend('copilot', {
+            schema = {
+              model = {
+                default = 'claude-haiku-4.5',
+              },
+            },
+          })
+        end,
+      },
+    },
     interactions = {
       chat = {
         adapter = 'copilot',
