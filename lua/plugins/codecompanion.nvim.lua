@@ -26,7 +26,17 @@ return {
   },
   opts = {
     interactions = {
-      chat = { adapter = 'copilot' },
+      chat = {
+        adapter = 'copilot',
+        tools = {
+          opts = {
+            -- Keep LSP diagnostics and MCP access loaded for code queries.
+            -- This covers attached-buffer diagnostics and broader LSP-style actions
+            -- exposed by MCP servers (for example clangd/neovim MCP tools).
+            default_tools = { 'get_diagnostics', 'mcp' },
+          },
+        },
+      },
       inline = { adapter = 'copilot' },
       cmd = {adapter = 'copilot'},
       background = { adapter = 'copilot' },
@@ -65,6 +75,11 @@ return {
       mcphub = {
         callback = 'mcphub.extensions.codecompanion',
         opts = {
+          -- Required to expose server groups (@server) and tool namespaced functions
+          -- like @server__tool in CodeCompanion.
+          make_tools = true,
+          show_server_tools_in_chat = true,
+          add_mcp_prefix_to_tool_names = false,
           -- Newer CodeCompanion builds no longer expose interactions.chat.variables.
           -- Keep MCP tools/slash commands enabled, but disable variable injection to avoid crashes.
           make_vars = false,
