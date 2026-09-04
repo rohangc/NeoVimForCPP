@@ -2,6 +2,7 @@
 A simple, efficient and effective [Neovim](https://neovim.io) customization meant primarily for development of large C++ projects using:
 1. [Clangd](https://clangd.llvm.org) as the [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) server.
 1. [Git](https://git-scm.com) as the [Version Control System](https://en.wikipedia.org/wiki/Version_control).
+1. [Github Copilot CLI](https://github.com/features/copilot) for Generative AI bells and whistles.
 
 # Usage Guide:
 ## Installation:
@@ -15,6 +16,19 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
       1. Install [Python's](https://www.python.org) 'Neovim' package:
          ```bash
          pip install neovim
+         ```
+   1. [Node.js](https://nodejs.org/en/download) for [Github Copilot](https://github.com/github/copilot.vim), [Codecompanion](https://codecompanion.olimorris.dev/getting-started) and other packages.
+   1. [Github Copilot CLI](https://github.com/features/copilot/cli).
+      ```bash
+      winget install GitHub.Copilot
+      ```
+   1. [Clangd-mcp-server](https://github.com/felipeerias/clangd-mcp-server).
+      1. Right now, this package cannot be installed via npm (and hence, we cannot automatically install it within Neovim).
+      2. Until this package becomes available via npm, install it manually by executing commands:
+         ```bash
+         git clone https://github.com/felipeerias/clangd-mcp-server.git
+         cd clangd-mcp-server
+         npm install && npm run build && npm link
          ```
    1. For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) plugin (a Neovim plugin that manages [Tree-sitter](https://github.com/tree-sitter/tree-sitter) and its parsers:
       1. The latest [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) binary should be available in your system's 'PATH'.
@@ -73,6 +87,7 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
    1. On Windows, the first invocation of Neovim should happen from within a shell with administrator privilages.
    1. In the Lazy.nvim plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
    1. Exit Lazy.nvim by entering: ```:q```.
+   1. Authenticate Github Copilot by entering command: ```:Copilot auth``` and following on-screen instructions.
 
 1. Execute command ```:checkhealth```
    1. This shows you a list of missing/broken/incompatible dependencies (other programs) that need to be resolved for Neovim to work.
