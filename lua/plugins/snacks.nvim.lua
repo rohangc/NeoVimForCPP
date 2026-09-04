@@ -18,6 +18,18 @@ return {
     words = { enabled = true },
   },
   keys = {
+    -- Open the GitHub Copilot CLI in a docked bottom split terminal
+    { "<leader>ct", function()
+        Snacks.terminal.toggle("copilot", {
+          win = {
+            position = "left", -- Locks it to the bottom
+            width = 0.5,        -- Spans 40% of screen width 
+          }
+        })
+      end,
+      desc = "Toggle [C]odeCompanion [T]erminal (CLI) docked"
+    },
+
     -- Standard Terminal Toggles
     { "<leader>tf", function() Snacks.terminal.toggle(nil, { win = { position = "float" } }) end, desc = "Toggle [F]loating terminal" },
     { "<leader>tl", function() Snacks.terminal.toggle(nil, { win = { position = "left", width=0.5 } }) end, desc = "Toggle docked terminal - [L]eft" },
