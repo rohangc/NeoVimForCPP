@@ -12,7 +12,18 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'romus204/tree-sitter-manager.nvim',
-    'zbirenbaum/copilot.lua',
+    -- 1. Added full configuration to copilot.lua here to handle background auth natively
+    {
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      event = 'InsertEnter',
+      config = function()
+        require('copilot').setup({
+          suggestion = { enabled = true }, -- Set to true if you want inline ghost-text/LSP behavior!
+          panel = { enabled = false },
+        })
+      end,
+    },
     {
       'ravitemer/mcphub.nvim',
       cmd = { "MCPHub" },
@@ -25,6 +36,8 @@ return {
     },
   },
   opts = {
+    log_level = 'DEBUG',
+
     adapters = {
       http = {
         copilot = function()
@@ -43,15 +56,13 @@ return {
         adapter = 'copilot',
         tools = {
           opts = {
-            -- Keep LSP diagnostics and MCP access loaded for code queries.
-            -- This covers attached-buffer diagnostics and broader LSP-style actions
-            -- exposed by MCP servers (for example clangd/neovim MCP tools).
+            -- Keeps Neovim's active LSP diagnostics pipeline tied directly into chat queries
             default_tools = { 'get_diagnostics', 'mcp' },
           },
         },
       },
       inline = { adapter = 'copilot' },
-      cmd = {adapter = 'copilot'},
+      cmd = { adapter = 'copilot' },
       background = { adapter = 'copilot' },
       cli = {
         agent = 'copilot',
@@ -81,21 +92,14 @@ return {
         },
       },
     },
-    opts = {
-      log_level = 'DEBUG',
-    },
     extensions = {
       mcphub = {
         callback = 'mcphub.extensions.codecompanion',
         opts = {
-          -- Required to expose server groups (@server) and tool namespaced functions
-          -- like @server__tool in CodeCompanion.
           make_tools = true,
           show_server_tools_in_chat = true,
           add_mcp_prefix_to_tool_names = false,
-          -- Newer CodeCompanion builds no longer expose interactions.chat.variables.
-          -- Keep MCP tools/slash commands enabled, but disable variable injection to avoid crashes.
-          make_vars = false,
+          make_vars = false, -- Disabling variable injections keeps MCP from crashing newer CC builds
           make_slash_commands = true,
           show_result_in_chat = true,
         },
