@@ -28,7 +28,7 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
              * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
            * As part of your [Cygwin](https://www.cygwin.com/) installation.
            * [MSys2](https://www.msys2.org/) UCRT64 environment. Read the detailed instructions on this page to correctly install the compilers.
-           * [Clang C/C++ compiler](https://releases.llvm.org/download.html). Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
+           * [Clang C/C++ compiler](https://releases.llvm.org/download.html) - avoid this if possible. Read [this](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#llvm-clang) for details.
              * For some reason, the Treesiter plugin cannot find standard C/C++ header files with the LLVM Clang installation ([read this](https://clangd.llvm.org/troubleshooting#cant-find-standard-library-headers-map-stdioh-etc)).
              * Hence, install [Microsoft Visual Studio](https://visualstudio.microsoft.com) (even the free "Community Edition" will suffice).
              * There is no need to add 'cl.exe' to the 'PATH' environment variable. Treesitter somehow seems to find the header files it needs from the VS installation directory.
@@ -69,8 +69,8 @@ A simple, efficient and effective [Neovim](https://neovim.io) customization mean
       ```bash
       chmod +x NvimConfigure.sh
       ```
-1. Invoke Neovim - it should automatically start installing plugins using the [Lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager.
-   1. On Windows, the first invocation of Neovim should happen from within a shell with administrator privilages.
+1. Invoke Neovim (on Windows, from within a shell with administrator privilages) - it should automatically start installing plugins using the [Lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager.
+   1. Subsequent invocation of Neovim on Widows do not need administrator privilages unless when new Tree-sitter parsers are compiled and installed.
    1. In the Lazy.nvim plugin manager GUI, key in: ```Shift + U``` multiple times to update all installed plugins.
    1. Exit Lazy.nvim by entering: ```:q```.
 
