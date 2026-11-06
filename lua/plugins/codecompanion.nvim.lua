@@ -4,7 +4,7 @@ return {
   keys = {
     {
       '<leader>cc',
-      '<cmd>CodeCompanionChat<CR>',
+      '<cmd>CodeCompanionChat #{buffer}<CR>',
       mode = 'n',
       desc = '[C]odeCompanion [C]hat',
     },
