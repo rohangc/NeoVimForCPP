@@ -65,6 +65,8 @@ vim.opt.wrapmargin = 0
 vim.opt.wildignore:append { '*\\tmp\\*', '*.dll', '*.exe', '*.exp', '*.gz', '*.ilk', '*.lib', '*.o', '*.pdb', '*.pch', '*.so', '*.swp', 'tags', '*.tar', '*.zip' }
 
 -- My keymaps and variables
+vim.keymap.set('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-a>', '<Esc>ggVG', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-n>', ':tnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-p>', ':tprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F5>', ':cprev<CR>', { noremap = true, silent = true })
